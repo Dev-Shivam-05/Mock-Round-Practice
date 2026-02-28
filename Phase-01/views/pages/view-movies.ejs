@@ -1,0 +1,64 @@
+<%- include('../partials/header.ejs') %>
+
+    <main>
+        <section class="view">
+            <div class="container">
+                <div class="row justify-content-lg-center mt-5">
+                    <div class="col-md">
+                        <table class="table table-active table-bordered table-hover table-dark table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Sr No.
+                                    </th>
+                                    <th>
+                                        Image
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        E-Mail
+                                    </th>
+                                    <th>
+                                        Phone
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <% Movies.forEach((Movie , index) => { %>
+                                    <tr>
+                                        <td>
+                                            <%= index + 1 %>
+                                        </td>
+                                        <td>
+                                            <%= Movie.movieName %>
+                                        </td>
+                                        <td>
+                                            <%= Movie.movieEmail %>
+                                        </td>
+                                        <td>
+                                            <%= Movie.moviePhone %>
+                                        </td>
+                                        <td>
+                                            <img src="/<%= Movie.movieImage %>" alt=" <%= Movie.movieName %> " height="100" width="100">
+                                        </td>
+                                        <td>
+                                            <a href="/delete/<%= Movie._id %>" class="btn btn-danger">Delete</a>
+                                            <a href="/edit-movie/<%= Movie._id %>" class="btn btn-warning">Edit</a>
+                                        </td>               
+                                    </tr>
+                                  <%  }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>

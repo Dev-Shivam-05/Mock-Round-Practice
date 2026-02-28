@@ -1,0 +1,33 @@
+    <%- include('./partials/header.ejs') %>
+    <main>
+        <section class="add">
+            <div class="container">
+                <div class="row justify-content-center mt-5">
+                    <div class="col-md-8">
+                        <h2>Add Data</h2>
+                        <form method="post" action="/add-movie" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Name</label>
+                                <input type="text" name="movieName" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" class="form-control" required name="movieEmail" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Phone No.</label>
+                                <input type="number" class="form-control" required name="moviePhone" minlength="10" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Movie Image</label>
+                                <input type="file" class="form-control" required name="movieImage" id="exampleInputPassword1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('./partials/footer.ejs') %>
