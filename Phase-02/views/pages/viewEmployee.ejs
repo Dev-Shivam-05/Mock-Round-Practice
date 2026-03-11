@@ -1,0 +1,89 @@
+<%- include('../partials/header.ejs') %>
+    <main>
+        <section class="viewEmployee">
+            <div class="container-fluid">
+                <div class="row justify-content-center mt-3">
+                    <% if(employee===[]) {%>
+                        <div class="col-md-6 text-center mt-5">
+                            <h2>No Employee Found</h2>
+                            <p>Add Some Employees</p>
+                            <a href="/addEmployee" class="btn btn-primary">Add Employees</a>
+                        </div>
+                        <% } else { %>
+                            <div class="col-md-12">
+                                <h1 class="mb-4">Employee Data</h1>
+                                <table
+                                    class="table table-hover table-active table-bordered table-success table-responsive table-striped table-striped-columns text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Sr No.</th>
+                                            <th scope="col">Employee Name</th>
+                                            <th scope="col">Employee Role</th>
+                                            <th scope="col">Employee Department</th>
+                                            <th scope="col">Employee City</th>
+                                            <th scope="col">Employee Salary In Rupees </th>
+                                            <th scope="col">Employee Experience</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% employee.forEach((emp,index)=> { %>
+                                            <tr>
+                                                <td>
+                                                    <%= index + 1 %>
+                                                </td>
+                                                <td>
+                                                    <%= emp.employeeName %>
+                                                </td>
+                                                <td>
+                                                    <%= emp.employeeRole %>
+                                                </td>
+                                                <td>
+                                                    <%= emp.employeeDepartment %>
+                                                </td>
+                                                <td>
+                                                    <%= emp.employeeCity %>
+                                                </td>
+                                                <td>
+                                                    <%= emp.employeeSalary %>
+                                                </td>
+                                                <td>
+                                                    <%= emp.employeeExperience %>
+                                                </td>
+                                                <td>
+                                                    <a href="/delete/<%= emp._id %>" class="btn btn-danger">Delete
+                                                        Employee</a>
+                                                    <a href="/edit/<%= emp._id %>" class="btn btn-warning">Edit
+                                                        Employee</a>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <% } %>
+                                <div class="d-flex justify-content-end">
+                                    <ul class="pagination ">
+                                        <li class="page-item">
+                                            <a class="page-link disabled" href="#">Previous</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link active" href="#">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('../partials/footer.ejs') %>

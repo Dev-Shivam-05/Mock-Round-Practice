@@ -1,0 +1,31 @@
+<%- include('./partials/header.ejs') %>
+    <main>
+        <section>
+            <div class="container">
+                <div class="row mt-5">
+                    <% if(employee == []) {%>
+                        <div class="col-md-6 text-center mt-5">
+                            <h2>No Employee Found</h2>
+                            <p>Add Some Employees</p>
+                            <a href="/addEmployee" class="btn btn-primary">Add Employees</a>
+                        </div>
+                        <% } else { 
+                            employee.forEach((emp) => {                            
+                            %>
+                            <div class="col-md-3 my-1">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h3 class="card-title"><%= emp.employeeName %></h3>
+                                        <h6 class="card-title text-danger"><%= emp.employeeRole %></h6>
+                                        <p><%= emp.employeeName %> is <%= emp.employeeRole %> of <%= emp.employeeDepartment %> Department.And <%= emp.employeeName %> Lives in <%= emp.employeeCity %> City and working in Rupees <%= emp.employeeSalary %> Salary In Our Company</p>
+                                        <a href="/viewEmployee" class="btn btn-primary mb-2">Check Out All Employees</a>
+                                        <a href="/addEmployee" class="btn btn-success mb-2">Add New Employees</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }); } %>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('./partials/footer.ejs') %>
