@@ -10,44 +10,98 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <!-- custom styling -->
+    <style>
+        /* handling extra small viewport width */
+        @media (max-width: 400px) {
+            .container {
+                padding: 1.5rem !important;
+                margin-top: 0;
+            }
+            h1{
+                font-size: 24px;
+            }
+            p{
+                font-size: 12px;
+            }
+            #bestScoreDisplay{
+                font-size: 14px;
+            }
+            #gameArea{
+                padding: 0 auto;
+            }
+            #guessInput{
+                width: 100%;
+                height: 50px;
+                margin-bottom: 10px;
+            }
+            #submitBtn{
+                width: 100%;
+                margin: 0;
+                margin-left: 0 !important;
+            }
+            input ,
+            form-control{
+                width: 100% !important;
+            }
+            
+            button {
+                width: 100% !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-primary d-flex justify-content-center align-items-center">
+<body class="bg-primary d-flex justify-content-center align-items-center pt-5">
+    <!-- number guessing section starts -->
     <section class="number-guessing mt-5 py-5 px-5 bg-white rounded-4" style="width: 500px;">
+        <!-- header starts -->
         <header>
             <div class="container d-flex flex-column justify-content-center align-items-center">
                 <h1 class="text-secondary-emphasis fw-bold">Guess the Number</h1>
-                <p class="text-secondary mb-0 fs-6">Pick a number between 1 and 100</p>
+                <p class="text-secondary mb-0 fw-medium">Pick a number between 1 and 100</p>
                 <div class="best-score text-primary fw-semibold mb-3" id="bestScoreDisplay">Best Score: --</div>
             </div>
         </header>
+        <!-- header ends -->
+
+        <!-- main start -->
         <main id="gameArea">
             <div class="container">
-                <div class="input-group">
-                    <input type="number" id="guessInput" class="form-control rounded-2 w-50" placeholder="Enter number..." min="1"
-                        max="100">
+
+                <!-- These division takes user input / the number guessed by user -->
+                <div class="input-group text-center">
+                    <input type="number" id="guessInput" class="form-control rounded-2"
+                        placeholder="Enter number..." min="1" max="100">
                     <button id="submitBtn" class="btn btn-primary ms-3 rounded-2 px-3 py-2" type="button">Guess</button>
                 </div>
 
+                <!-- These division is used to display feedback message for error handling , wining etc..... -->
                 <div class="message-box my-4 text-center">
                     <p id="feedbackMessage" class="fs-5 fw-bold">Start guessing!</p>
                 </div>
 
+                <!-- These Function is used to display the total no. of counts of attempts and history of attempts in current round -->
                 <div class="stats bg-secondary-subtle p-3 rounded-3 text-start">
                     <p class="mb-0">Attempts: <span id="attemptCount" class="fw-bold text-primary">0</span></p>
-                    <p class="mb-0">Previous Guesses: <span id="guessHistory" class="fw-bold text-primary">None</span></p>
+                    <p class="mb-0">Previous Guesses: <span id="guessHistory" class="fw-bold text-primary">None</span>
+                    </p>
                 </div>
             </div>
         </main>
+        <!-- main ends -->
 
+        <!-- These Section is Used for displaying overall game result....    -->
         <div id="restartArea" class="d-none">
             <div class="container">
-
                 <h2 id="resultTitle">Game Over</h2>
                 <button id="restartBtn" class="form-control btn btn-outline-secondary">Play Again</button>
             </div>
         </div>
     </section>
+    <!-- number guessing section ends -->
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -57,6 +111,7 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 
+    <!-- custom Js -->
     <script src="./js/script.js"></script>
 </body>
 

@@ -30,6 +30,7 @@ router.post("/filterEmployee", searchController.searchEmployee);
 
 // employee Actions
 router.get("/delete/:id", employeeController.deleteEmployee);
+router.get("/edit/:id", employeeController.editEmployeePage);
 router.post("/edit/:id", employeeController.editEmployee);
 
 export default router;

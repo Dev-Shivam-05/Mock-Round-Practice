@@ -10,7 +10,7 @@ const employeeSchema = new mongoose.Schema({
   employeeRole: {
     type: String,
     required: true,
-    // enum: [Developer, Manager, HR, Tester],
+    // enum: ["Developer", Manager, HR, Tester],
   },
   employeeDepartment: {
     type: String,
@@ -29,7 +29,7 @@ const employeeSchema = new mongoose.Schema({
   employeeExperience: {
     type: String,
     required: true,
-    // enum: [1,2,3,4,5,6],
+    enum: [1,2,3,4,5,6],
   },
 });
 

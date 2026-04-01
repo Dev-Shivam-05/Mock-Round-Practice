@@ -1,8 +1,10 @@
+// Dynamic Variables going to used in the Project 
 let targetNumber;
 let userGuesses = [];
 let attempts = 0;
 let gameOver = false;
 
+// constant Variables that stores Html Elements
 const guessInput = document.getElementById("guessInput");
 const submitBtn = document.getElementById("submitBtn");
 const feedbackMsg = document.getElementById("feedbackMessage");
@@ -13,6 +15,7 @@ const restartArea = document.getElementById("restartArea");
 const restartBtn = document.getElementById("restartBtn");
 const bestScoreDisplay = document.getElementById("bestScoreDisplay");
 
+// Function To Initialize Game Therefore sets target Value , set user input , attempts to empty and gameOver To false
 const initGame = () => {
   targetNumber = Math.floor(Math.random() * 100) + 1;
   userGuesses = [];
@@ -34,6 +37,7 @@ const initGame = () => {
   console.log(`Debug: Target number is ${targetNumber}`);
 };
 
+// these function is help to handle guesses of user and validate user inputs for negative values , empty inputs , Invalid and large numbers input
 const handleGuess = () => {
   if (gameOver) return;
 
@@ -71,7 +75,7 @@ const handleGuess = () => {
   guessInput.focus();
 };
 
-
+// these function is used to display feedback depending on the users no. of guesses
 const displayFeedback = (message, type) => {
     feedbackMsg.textContent = message;
 
@@ -81,11 +85,13 @@ const displayFeedback = (message, type) => {
     else feedbackMsg.style.color = '#2d3436';
 }
 
+// These function is used to update the stats like no. of attempt , history of attempt in current round
 const updateStatsUI = () => {
     attemptDisplay.textContent = attempts;
     historyDisplay.textContent = userGuesses.join(', ');
 }
 
+// these function is used to handle the wining scenario for user by displaying feedbacks and etc....
 const handleWin = () => {
     gameOver = true;
     displayFeedback(`Correct! The Number Was ${targetNumber}.` , "success");
@@ -100,7 +106,7 @@ const handleWin = () => {
     }, 1500); 
 }
 
-
+// these function is used to validate the best score and save / Update best score in Local Storage 
 const checkAndSaveBestScore = (currentAttempts) => {
     const storedBest = localStorage.getItem('best_score');
     
@@ -110,18 +116,20 @@ const checkAndSaveBestScore = (currentAttempts) => {
     }
 }
 
+// These function is used to display the best score of the user....
 const loadBestScore = () => {
     const storedBest = localStorage.getItem('best_score');
     if (storedBest) {
-        bestScoreDisplay.textContent = `Best Score: ${storedBest} Attempts`;
+        bestScoreDisplay.innerText = `Best Score: ${storedBest} Attempts`;
     } else {
-        bestScoreDisplay.textContent = `Best Score: --`;
+        bestScoreDisplay.innerText = `Best Score: --`;
     }
 }
 
-
+// handling user interaction... for  submit and restart button
 submitBtn.addEventListener('click', handleGuess);
 restartBtn.addEventListener('click', initGame);
 
+// calling important functions
 initGame(); 
 loadBestScore();

@@ -7,6 +7,13 @@ const employeeController = {
     console.log(deletedEmployee);
     return res.redirect("/viewEmployee");
   },
+
+  async editEmployeePage(req, res) {
+    let { id } = req.params;
+    let employee = await Employee.findById(id);
+    console.log(employee);
+    return res.render("pages/editEmployee.ejs", { employee });
+  },
   async editEmployee(req, res) {
     let { id } = req.params;
     let employee = await Employee.findById(id);
